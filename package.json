@@ -3,10 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --listen 3000",
+    "build": "yarn test:once && next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "e2e": "yarn e2e:run",
+    "e2e:install": "cypress install",
+    "e2e:open": "cypress open",
+    "e2e:run": "cypress run",
+    "e2e:ci": "yarn e2e:install && cypress run --record",
+    "lint": "esw src/ -w --ext .ts --ext .tsx",
+    "lint:once": "eslint src/ --ext .ts --ext .tsx",
+    "lint:fix": "eslint src/ --ext .ts --ext .tsx --fix",
+    "lint:fix:preview": "eslint src/ --ext .ts --ext .tsx --fix-dry-run",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
+    "security:audit": "yarn audit",
+    "packages:upgrade": "yarn upgrade-interactive --latest"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
   },
   "dependencies": {
     "next": "9.2.2",
@@ -14,8 +33,20 @@
     "react-dom": "16.13.0"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.4",
     "@types/node": "^13.9.0",
     "@types/react": "^16.9.23",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "cypress": "^4.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "jest": "^25.1.0",
+    "jest-extended": "^0.11.5",
+    "react-test-renderer": "^16.13.0",
+    "ts-jest": "^25.2.1",
     "typescript": "^3.8.3"
   }
 }

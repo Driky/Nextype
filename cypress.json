@@ -1,0 +1,7 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "projectId": "poc",
+  "screenshotsFolder": "cypress/screenshots/development",
+  "videosFolder": "cypress/videos/development",
+  "env": {}
+}
